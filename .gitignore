@@ -1,0 +1,6 @@
+# dataフォルダは無視
+data_and_corpus/
+
+__pycache__/
+
+.DS_Store
