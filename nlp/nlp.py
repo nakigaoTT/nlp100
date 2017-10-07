@@ -7,17 +7,34 @@ natural language processing library
 """
 
 import os
+import json
 import subprocess
-import nlp
+
+
+# file paths ##################################################################
+json_file = os.path.join(os.path.dirname(__file__), 'datas.json')
+with open(json_file, 'r') as f:
+    CORPUS_FILE = json.load(f)
+dirs = CORPUS_FILE.pop('directorys')
+OUTPUT_DIR = os.path.join(os.path.dirname(__file__), dirs['output'])
+CORPUS_DIR = os.path.join(os.path.dirname(__file__), dirs['corpus'])
 
 
 # Auxiliary ###################################################################
+def get(file_name):
+    if file_name in CORPUS_FILE.values():
+        return os.path.join(CORPUS_DIR, file_name)
+    elif file_name in [os.path.basename(f)
+                       for f in glob.glob(os.path.join(OUTPUT_DIR, '*'))]:
+        return os.path.join(OUTPUT_DIR, file_name)
+    raise ValueError('`%s` is not exist.' % file_name)
+
 def output(file_name):
-    """Make output directory when nlp.OUTPUT_DIR is noexist
+    """Make output directory when OUTPUT_DIR is noexist
     and return the output file path."""
-    if not os.path.isdir(nlp.OUTPUT_DIR):
-        os.mkdir(nlp.OUTPUT_DIR)
-    return os.path.join(nlp.OUTPUT_DIR, file_name)
+    if not os.path.isdir(OUTPUT_DIR):
+        os.mkdir(OUTPUT_DIR)
+    return os.path.join(OUTPUT_DIR, file_name)
 
 
 def unix(cmd, notice=True):

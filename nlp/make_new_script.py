@@ -8,12 +8,19 @@ Last update: Sat Oct 7 2017
 """
 
 import re
+import json
 import glob
 import subprocess
-from os.path import join, splitext, basename
+from os.path import join, dirname, splitext, basename
 from datetime import datetime
 
-from nlp import CORPUS_FILE
+
+json_file = join(dirname(__file__), 'datas.json')
+with open(json_file, 'r') as f:
+    jdata = json.load(f)
+CORPUS_DIR = jdata.pop('directorys')['corpus']
+CORPUS_FILE = {key: join(dirname(__file__), CORPUS_DIR, value)
+               for key, value in jdata.items()}
 
 
 def next_probrem(dir_path):

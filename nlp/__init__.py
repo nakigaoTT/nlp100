@@ -9,8 +9,5 @@ Last update: Sat Oct 7 2017
 @author t-take
 """
 
-from .datas import *
 from .make_new_script import *
 from .nlp import *
-
-OUTPUT_DIR = './output'

@@ -6,7 +6,7 @@
 Mac OS X EL Capitan 10.11.6
 Python 3.4.5 :: Continuum Analytics, Inc.
 
-### python modules
+### 追加モジュール
 
 Matplotlib
 ```Bush:
