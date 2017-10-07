@@ -1,0 +1,17 @@
+{
+    "directorys": {
+        "output": "./output",
+        "corpus": "./data_and_corpus"
+    },
+    "artist": "artist.json.gz",
+    "enwiki_small": "enwiki-20150112-400-r100-10576.txt.bz2",
+    "enwiki_big": "enwiki-20150112-400-r10-105752.txt.bz2",
+    "hightemp": "hightemp.txt",
+    "jawiki": "jawiki-country.json.gz",
+    "neko": "neko.txt",
+    "nlp_questions": "nlp_question100.txt",
+    "nlp": "nlp.txt",
+    "analogy": "questions-words.txt",
+    "polarity": "rt-polaritydata.tar.gz",
+    "wordsim": "wordsim353.zip"
+}
