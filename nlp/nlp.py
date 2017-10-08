@@ -7,6 +7,7 @@ natural language processing library
 """
 
 import os
+import glob
 import json
 import subprocess
 
@@ -16,8 +17,10 @@ json_file = os.path.join(os.path.dirname(__file__), 'datas.json')
 with open(json_file, 'r') as f:
     CORPUS_FILE = json.load(f)
 dirs = CORPUS_FILE.pop('directorys')
-OUTPUT_DIR = os.path.join(os.path.dirname(__file__), dirs['output'])
-CORPUS_DIR = os.path.join(os.path.dirname(__file__), dirs['corpus'])
+OUTPUT_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '../', dirs['output']))
+CORPUS_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '../', dirs['corpus']))
 
 
 # Auxiliary ###################################################################

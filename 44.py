@@ -15,3 +15,33 @@ Create on Sat Oct 07 2017
 
 @author t-take
 """
+
+from itertools import islice
+import pydot_ng as pydot
+import nlp
+
+
+def make_graph(chunk_list, save_name):
+    graph = pydot.Dot(graph_type='digraph')
+
+    for chunk in chunk_list:
+        graph.add_node(pydot.Node(chunk.num, label=chunk.surface('norm')))
+
+    for chunk in filter(lambda c: c.dst >= 0, chunk_list):
+        graph.add_edge(pydot.Edge(chunk.num, chunk.dst))
+
+    graph.write_png(save_name)
+
+
+if __name__ == '__main__':
+
+    cabocha_file = nlp.get('neko.txt.cabocha')
+    morph_png = nlp.output('neko_morph_graph.png')
+
+    target_line_number = 4
+    chunks_data = nlp.make_chunk(cabocha_file)
+
+    # `target_line_number`番目のchunkを取得
+    target_chunks = next(islice(chunks_data, target_line_number, None))
+
+    make_graph(target_chunks, morph_png)

@@ -3,8 +3,7 @@
 [言語処理100本ノック 2015](http://www.cl.ecei.tohoku.ac.jp/nlp100/)演習まとめ
 
 ## 演習環境
-Mac OS X EL Capitan 10.11.6
-Python 3.4.5 :: Continuum Analytics, Inc.
+Mac OS X EL Capitan 10.11.6 + Python 3.4.5 :: Continuum Analytics, Inc.
 
 ### 追加モジュール
 
@@ -30,6 +29,11 @@ $ sudo make install
 $ cd python
 $ python setup.py build
 $ python setup.py install
+```
+
+GraphViz (Dot言語のグラフ情報から画像ファイルを生成するツール)
+```Bush:
+$ conda install graphviz
 ```
 
 pydot-ng
