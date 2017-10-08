@@ -38,7 +38,7 @@ if __name__ == '__main__':
     cabocha_file = nlp.get('neko.txt.cabocha')
     morph_png = nlp.output('neko_morph_graph.png')
 
-    target_line_number = 4
+    target_line_number = 3
     chunks_data = nlp.make_chunk(cabocha_file)
 
     # `target_line_number`番目のchunkを取得
