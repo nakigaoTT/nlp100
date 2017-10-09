@@ -37,10 +37,10 @@ def case_analysis2(sentence):
         except StopIteration:
             continue
         else:
-            srcs = list(map(lambda s: sentence[s], chunk.srcs))
+            srcs = map(lambda s: sentence[s], chunk.srcs)
             part = [str(m) for s in srcs for m in s.morphs if m.pos == '助詞']
             if part != []:
-                cases.append([morph.base, part, srcs])
+                cases.append([morph.base, sorted(part), srcs])
     return cases
 
 

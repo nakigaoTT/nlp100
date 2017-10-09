@@ -18,9 +18,9 @@ with open(json_file, 'r') as f:
     CORPUS_FILE = json.load(f)
 dirs = CORPUS_FILE.pop('directorys')
 OUTPUT_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), '../', dirs['output']))
+    os.path.join(os.path.dirname(__file__), dirs['output']))
 CORPUS_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), '../', dirs['corpus']))
+    os.path.join(os.path.dirname(__file__), dirs['corpus']))
 
 
 # Auxiliary ###################################################################

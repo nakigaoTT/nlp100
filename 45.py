@@ -45,7 +45,7 @@ def case_analysis(sentence):
             srcs = map(lambda s: sentence[s], chunk.srcs)
             part = [str(m) for s in srcs for m in s.morphs if m.pos == '助詞']
             if part != []:
-                cases.append([morph.base, part])
+                cases.append([morph.base, sorted(part)])
     return cases
 
 
