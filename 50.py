@@ -13,7 +13,6 @@ Create on Tue Oct 10 2017
 @author t-take
 """
 
-from itertools import islice
 import nlp
 
 
