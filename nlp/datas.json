@@ -1,6 +1,6 @@
 {
     "directorys": {
-        "output": "./output",
+        "output": "../output",
         "corpus": "./data_and_corpus"
     },
     "artist": "artist.json.gz",

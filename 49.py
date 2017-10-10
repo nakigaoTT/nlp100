@@ -38,6 +38,7 @@ import nlp
 
 
 # def make_path(sentence, x_chunk, y_chunk, chunk=None):
+#
 #     if chunk is None:   # * 始端
 #         if x_chunk is not None:     # xの始端
 #             rep_morph = next(filter(lambda m: m.pos == '名詞', x_chunk.morphs))
@@ -51,6 +52,7 @@ import nlp
 #             dst_chunk = sentence[y_chunk.dst]
 #             return ' '.join([y_surface,
 #                              make_path(sentence, x_chunk, None, dst_chunk)])
+#
 #     elif chunk.dst > 0:
 #         if y_chunk is not None and chunk.num == y_chunk.num:    # X -> Y
 #             return ' '.join(['->', 'Y'])
@@ -58,6 +60,7 @@ import nlp
 #             dst_chunk = sentence[chunk.dst]
 #             return ' '.join(['->', chunk.surface('norm'),
 #                              make_path(sentence, x_chunk, y_chunk, dst_chunk)])
+#
 #     else:               # * 終端
 #         if y_chunk is not None:     # Yの探索を開始
 #             return ' '.join(['|', make_path(sentence, x_chunk, y_chunk, None)])
@@ -79,8 +82,10 @@ def make_path(sentence, x_chunk, y_chunk, chunk=None):
             y_chunk = None
             char = 'Y'
 
-        rep_morph = next(filter(lambda m: m.pos == '名詞', chunk.morphs))
-        surface = chunk.surface('norm').replace(str(rep_morph), char)
+        # rep_morph = next(filter(lambda m: m.pos == '名詞', chunk.morphs))
+        # surface = chunk.surface('norm').replace(str(rep_morph), char)
+        char = [''] * len(chunk.morphs) + list(char)
+        surface = ''.join([char.pop() if m.pos == '名詞' else (str(m) if m.pos != '記号' else '') for m in chunk.morphs])
         dst_chunk = sentence[chunk.dst]
         return ' '.join([surface,
                          make_path(sentence, x_chunk, y_chunk, dst_chunk)])
@@ -119,5 +124,6 @@ if __name__ == '__main__':
     # 確認
     target_line_number = 5
     sentence = next(islice(chunks, target_line_number, None))
+    print(sentence)
     rpath = relate_path(sentence)
     print('\n'.join(rpath))
