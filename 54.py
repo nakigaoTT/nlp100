@@ -11,3 +11,27 @@ Stanford Core NLPの解析結果XMLを読み込み，単語，レンマ，品詞
 
 @author t-take
 """
+from __future__ import division, absolute_import, print_function
+
+import xml.etree.ElementTree as ET
+import nlp
+
+
+def word_lemma_pos(xml_file):
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+    for token in root.iter('token'):
+        word = token.findtext('word')
+        lemma = token.findtext('lemma')
+        pos = token.findtext('POS')
+        yield '\t'.join([word, lemma, pos])
+
+
+if __name__ == '__main__':
+
+    xml_file = nlp.get('nlp.txt.xml')
+
+    writer = word_lemma_pos(xml_file)
+
+    for word in writer:
+        print(word)
