@@ -13,5 +13,6 @@
     "nlp": "nlp.txt",
     "analogy": "questions-words.txt",
     "polarity": "rt-polaritydata.tar.gz",
-    "wordsim": "wordsim353.zip"
+    "wordsim": "wordsim353.zip",
+    "nlp_xml": "nlp.txt.xml"
 }

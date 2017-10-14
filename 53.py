@@ -14,4 +14,22 @@ Stanford Core NLPを用い，入力テキストの解析結果をXML形式で得
 """
 from __future__ import division, absolute_import, print_function
 
+import xml.etree.ElementTree as ET
 import nlp
+
+
+def xml2word(xml_file):
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+    for word in root.iter('word'):
+        yield word.text
+
+
+if __name__ == '__main__':
+
+    xml_file = nlp.get('nlp.txt.xml')
+
+    writer = xml2word(xml_file)
+
+    for word in writer:
+        print(word)

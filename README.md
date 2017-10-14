@@ -40,3 +40,8 @@ pydot-ng
 ```Bush:
 $ conda install pydot-ng
 ```
+
+snowballstemmer (英語の語幹解析)
+```Bush:
+$ conda install snowballstemmer
+```
